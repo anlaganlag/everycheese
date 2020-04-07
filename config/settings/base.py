@@ -45,13 +45,24 @@ LOCALE_PATHS = [BASE_DIR.path("locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
+#DATABASES = {
+    ## Raises ImproperlyConfigured Exception
+    ## if DATABASE_URL Not in os.environ
+    #"default": env.db(
+        #"DATABASE_URL", default="postgres:///sql"
+    #)
+#}
 DATABASES = {
-    # Raises ImproperlyConfigured Exception
-    # if DATABASE_URL Not in os.environ
-    "default": env.db(
-        "DATABASE_URL", default="postgres:///sql"
-    )
+'default': {
+'ENGINE': 'django.db.backends.postgresql',
+'NAME': 'postgres',
+'USER': 'postgres',
+'PASSWORD': 'postgres',
+'HOST': '127.0.0.1',
+'PORT': 5432
 }
+}
+
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 
@@ -84,6 +95,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "sql.users.apps.UsersConfig",
+    "sql.cheeses.apps.CheesesConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
