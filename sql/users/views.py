@@ -21,12 +21,13 @@ user_detail_view = UserDetailView.as_view()
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     fields = [
-        "name",
+        "name","bio","pround"
     ]
 
     # We already imported user in the View code above,
     #   remember?
     model = User
+    
 
     # Send the User Back to Their Own Page after a
     #   successful Update
