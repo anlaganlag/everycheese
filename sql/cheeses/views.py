@@ -5,3 +5,5 @@ from .models import Cheese
 class CheeseListView(ListView):
     model = Cheese
         # Create your views here.
+class CheeseDetailView(DetailView):
+    model = Cheese
